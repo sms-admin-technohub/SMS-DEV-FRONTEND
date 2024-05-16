@@ -2,7 +2,6 @@ import Dashboard from './pages/dashboard/Dashboard'
 import { Routes, Route } from 'react-router-dom'
 import Departments from './pages/departments/Departments'
 import Students from './pages/students/Students'
-import Teachers from './pages/teachers/Teachers'
 import Subjects from './pages/subjects/Subjects'
 import DefaultLayout from './_components/DefaultLayout'
 import Accounts from './pages/accounts/Accounts'
@@ -13,6 +12,9 @@ import Library from './components/Library'
 import Holiday from './components/Holiday'
 import Timetable from './components/Timetable'
 import Settings from './components/Settings'
+import List from './pages/guardian/List'
+import EditGuradian from './pages/guardian/EditGuardian'
+import AddGuardian from './pages/guardian/AddGuardian'
 
 function App() {
 
@@ -23,9 +25,13 @@ function App() {
         <Route path='/dashboard' element={<Dashboard />} />
         <Route path='/departments' element={<Departments />} />
         <Route path='/students' element={<Students />} />
-        <Route path='/teachers' element={<Teachers />} />
         <Route path='/subjects' element={< Subjects />} />
         <Route path='/accounts' element={< Accounts />} />
+
+        {/* guardian */}
+        <Route path='/addguardian' element={<AddGuardian />} />
+        <Route path='/editguardian' element={<EditGuradian />} />
+        <Route path='/guardianlist' element={<List />} />
 
 
         {/* managment menu routes */}

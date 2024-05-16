@@ -1,13 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGraduationCap, faGear, faNewspaper, faBook, faTable, faCalendarDay, faCommentDollar, faClipboardList, faChalkboardUser, faHollyBerry, faBuilding, faBookOpenReader, faTableCellsLarge, faFileInvoiceDollar } from '@fortawesome/free-solid-svg-icons';
 
+const Sidebar = ({ isOpen }) => {
+  const [showDropdown, setShowDropdown] = useState(false);
 
-const Sidebar = ({isOpen}) => {
     return (
         <>
-            <aside className={isOpen ? "sidebar open" : "sidebar close"} style={{height:"90vh"}} >
+            <aside className={isOpen ? "sidebar open" : "sidebar close"} style={{ height: "90vh" }} >
                 {/* main menu start */}
                 <div className='py-5 pl-5 px-3 text-gray-500'>
                     Main Menu
@@ -69,6 +70,38 @@ const Sidebar = ({isOpen}) => {
                             </NavLink>
                         </span>
                     </li>
+                     {/* Guardian dropdown */}
+                     <li className=''>
+                        <FontAwesomeIcon icon={faChalkboardUser} />
+                        <span
+                            className=' px-4 py-2 rounded-sm cursor-pointer'
+                            onClick={() => setShowDropdown(!showDropdown)}
+                        >
+                            Guardians
+                        </span>
+
+                        {showDropdown && (
+                            <ul className=" space-y-3 ">
+
+                                <li className='mt-2'>
+                                    <NavLink to='/guardianlist' className='space-y-28  ml-2 px-8  rounded-md'>
+                                        Guardian List
+                                    </NavLink>
+                                </li>
+                                <li>
+                                    <NavLink to='/addguardian' className='space-y-3 mt-2 ml-2 px-8 py-2 rounded-sm'>
+                                        Add Guardian
+                                    </NavLink>
+                                </li>
+                                <li>
+                                    <NavLink to='/editguardian' className='space-y-3 mt-2  ml-2 px-8 py-2 rounded-md'>
+                                        Edit Guardian
+                                    </NavLink>
+                                </li>
+                            </ul>
+                        )}
+                    </li>
+
                 </ul>
                 {/* main menu end */}
 

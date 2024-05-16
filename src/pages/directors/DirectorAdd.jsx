@@ -20,7 +20,7 @@ function DirectorAdd(props) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://your-backend-url/api/directors', formData);
+      const response = await axios.post('http://127.0.0.1:8000/d/directors/', formData);
       console.log('Director added successfully:', response.data);
     } catch (error) {
       console.error('Error adding director:', error);

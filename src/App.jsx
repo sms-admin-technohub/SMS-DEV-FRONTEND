@@ -13,10 +13,15 @@ import Library from './components/Library'
 import Holiday from './components/Holiday'
 import Timetable from './components/Timetable'
 import Settings from './components/Settings'
+import DirectorList from './pages/directors/DirectorList'
+import DirectorView from './pages/directors/DirectorView'
+import DirectorAdd from './pages/directors/DirectorAdd';
+import DirectorEdit from './pages/directors/DirectorEdit';
 
 function App() {
 
   return (
+    // here you replace these components with your actual components!
     <Routes>
       {/* main menu routes */}
       <Route path='/' element={<DefaultLayout />} >
@@ -24,6 +29,10 @@ function App() {
         <Route path='/departments' element={<Departments />} />
         <Route path='/students' element={<Students />} />
         <Route path='/teachers' element={<Teachers />} />
+        <Route path='/directorList' element={<DirectorList />} />
+        <Route path='/directorView' element={<DirectorView />} />
+        <Route path='/directorEdit' element={<DirectorEdit />} />
+        <Route path='/directorAdd' element={<DirectorAdd />} />
         <Route path='/subjects' element={< Subjects />} />
         <Route path='/accounts' element={< Accounts />} />
 

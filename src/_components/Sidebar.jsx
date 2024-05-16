@@ -1,22 +1,26 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faGraduationCap, faGear, faNewspaper, faBook, faTable, faCalendarDay, faCommentDollar, faClipboardList, faChalkboardUser, faHollyBerry, faBuilding, faBookOpenReader, faTableCellsLarge, faFileInvoiceDollar } from '@fortawesome/free-solid-svg-icons';
+import { faGraduationCap, faGear, faNewspaper, faBook, faTable, faCalendarDay, faCommentDollar, faClipboardList, faChalkboardUser, faHollyBerry, faBuilding, faBookOpenReader, faTableCellsLarge, faFileInvoiceDollar, faAngleDown } from '@fortawesome/free-solid-svg-icons';
 
+const Sidebar = ({ isOpen }) => {
+    const [showDropdown, setShowDropdown] = useState(false);
 
-const Sidebar = ({isOpen}) => {
+    const toggleDropdown = () => {
+        setShowDropdown(!showDropdown);
+    };
+
     return (
         <>
-            <aside className={isOpen ? "sidebar open" : "sidebar close"} style={{height:"90vh"}} >
+            <aside className={isOpen ? "sidebar open" : "sidebar"} style={{height:"90vh"}} >
                 {/* main menu start */}
-                <div className='py-5 pl-5 px-3 text-gray-500'>
+                <div className='py-5 pl-5 px-3 text-gray-500'>          
                     Main Menu
                 </div>
                 <ul className="sidebar-menu space-y-7 pl-6  text-gray-500">
                     <li>
                         <span>
                             <FontAwesomeIcon icon={faTableCellsLarge} />
-
                             <NavLink
                                 to='/dashboard'
                                 className=' px-4'
@@ -44,9 +48,53 @@ const Sidebar = ({isOpen}) => {
                                 className='  px-4 '
                             >
                                 Teachers
-                            </NavLink>
+                            </NavLink>          
                         </span>
                     </li>
+                    {/* Directors dropdown */}
+
+                    <li className="relative">
+                        <span className="flex items-center">
+                            <FontAwesomeIcon icon={faChalkboardUser} />
+                            <NavLink
+                                to='/'
+                                className='active:text-blue-400 hover:text-blue-700  px-4 flex items-center'
+                                onClick={toggleDropdown}
+                                
+                            >
+                                Directors
+                                 &nbsp;&nbsp;&nbsp;&nbsp;
+                                <FontAwesomeIcon icon={faAngleDown} className="ml-1 transition-transform duration-300 transform" style={{ transform: showDropdown ? 'rotate(360deg)' : 'rotate(270deg)' }} />
+                            </NavLink>
+                        </span>
+                        {/* Dropdown menu */}
+                        {showDropdown && (
+                            <ul className="dropdown-menu pl-6 mt-2 text-gray-500 bg-white">
+                                <li>
+                                    <NavLink to='/directorList' className='pl-2 block py-1 rounded-md hover:text-white hover:bg-blue-600' onClick={() => setShowDropdown(false)}>
+                                        Director List
+                                    </NavLink>
+                                </li>
+                                <li>
+                                    <NavLink to='/directorView' className='pl-2 block py-1 rounded-md  hover:text-white hover:bg-blue-600' onClick={() => setShowDropdown(false)}>
+                                        Director View
+                                    </NavLink>
+                                </li>
+                                <li>
+                                    <NavLink to='/directorAdd' className='pl-2 block py-1 rounded-md  hover:text-white hover:bg-blue-600' onClick={() => setShowDropdown(false)}>
+                                        Director Add
+                                    </NavLink>
+                                </li>
+                                <li>
+                                    <NavLink to='/directorEdit' className='pl-2 block py-1 rounded-md  hover:text-white hover:bg-blue-600' onClick={() => setShowDropdown(false)}>
+                                        Director Edit
+                                    </NavLink>
+                                </li>
+                            </ul>
+                        )}
+                    </li>
+
+                    {/* Ending of Directors dropdown */}
                     <li>
                         <span>
                             <FontAwesomeIcon icon={faBuilding} />
@@ -71,10 +119,8 @@ const Sidebar = ({isOpen}) => {
                     </li>
                 </ul>
                 {/* main menu end */}
-
-
-                {/* Managment menu start */}
-                <div className='py-5 pl-5 px-3 text-gray-500'>
+                  {/* Managment menu start */}
+                  <div className='py-5 pl-5 px-3 text-gray-500'>
                     Managment
                 </div>
                 <ul className="sidebar-menu space-y-7 pl-6  text-gray-500">

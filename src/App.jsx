@@ -20,7 +20,7 @@ import StudentView from './pages/students/StudentView';
 function App() {
 
   return (
-    // here you replace these components with your actual components!
+    // here you replace these components with your actual components!!
     <Routes>
       {/* main menu routes */}
       <Route path='/' element={<DefaultLayout />} >

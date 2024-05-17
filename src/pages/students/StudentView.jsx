@@ -27,7 +27,7 @@ const studentsView = () => {
                         </div>
                         <div className="mb-4">
                             <h3 className="font-semibold"><FontAwesomeIcon className='pr-4'icon={faPhoneVolume}/>Mobile</h3>
-                            <p className='pl-7'>+91 89657 46512</p>
+                            <p className='pl-7'>+91 89657 06512</p>
                         </div>
                         <div className="mb-4">
                             <h3 className="font-semibold"><FontAwesomeIcon className='pr-4'icon={faEnvelope} />Email</h3>

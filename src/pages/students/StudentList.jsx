@@ -22,7 +22,7 @@ const StudentList = () => {
   };
 
   const handleSearch = () => {
-    console.log('Searching...');
+    console.log('Searching..');
   };
 
   const columns = ['id', 'name', 'class', 'dob', 'parent name', 'mobile', 'address'];

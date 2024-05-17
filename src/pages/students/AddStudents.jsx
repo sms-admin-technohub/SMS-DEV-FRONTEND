@@ -23,7 +23,7 @@ function AddStudentForm() {
         throw new Error('Failed to submit form data');
       }
 
-      // Handle success
+      // Handle succes
       console.log('Form data submitted successfully');
 
     } catch (error) {

@@ -27,7 +27,7 @@ const studentsView = () => {
                         </div>
                         <div className="mb-4">
                             <h3 className="font-semibold"><FontAwesomeIcon className='pr-4'icon={faPhoneVolume}/>Mobile</h3>
-                            <p className='pl-7'>+91 89657 48512</p>
+                            <p className='pl-7'>+91 89657 46512</p>
                         </div>
                         <div className="mb-4">
                             <h3 className="font-semibold"><FontAwesomeIcon className='pr-4'icon={faEnvelope} />Email</h3>
@@ -77,7 +77,7 @@ const studentsView = () => {
                             </div>
                             <div className="mb-2">
                                 <h6 className="font-semibold">2015 - 2017</h6>
-                                <p>Master of Science ,dubai</p>
+                                <p>Master of Science,UAE</p>
                             </div>
                         </div>
                     </div>

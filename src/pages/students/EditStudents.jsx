@@ -90,7 +90,6 @@ function EditStudentForm() {
               {errors.last_name && <span className="text-red-500 text-xs">This field is required</span>}
             </div>
 
-       
           </div>
         </div>
 

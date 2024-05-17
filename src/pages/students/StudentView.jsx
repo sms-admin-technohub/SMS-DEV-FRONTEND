@@ -60,7 +60,7 @@ const studentsView = () => {
                     <div>
                         <h2 className="text-lg mb-4 font-semibold">Hello, I am Daisy Parks</h2>
                         <p className="mb-4"> Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga magni possimus culpa dolore minus quo error sequi ex cupiditate! Fuga architecto fugiat aliquam ipsa quas cumque sed quam quisquam dolor. Pariatur, eos quas quod corporis perspiciatis amet! Alias eligendi, aperiam voluptatibus harum expedita itaque animi. Sed vel quia voluptatibus minus?</p>
-                        <p className="mb-4">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nihil, eos optio aut hic ratione beatae. Quam quo dignissimos alias deleniti!</p>
+                        <p className="mb-4">Lorem ipsum, dolor st amet consectetur adipisicing elit. Nihil, eos optio aut hic ratione beatae. Quam quo dignissimos alias deleniti!</p>
                         <div>
                             <h3 className="text-lg font-semibold mb-4 ">Education</h3>  
                             <div className="mb-2">

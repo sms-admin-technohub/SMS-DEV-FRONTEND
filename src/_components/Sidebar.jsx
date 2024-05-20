@@ -57,7 +57,7 @@ const Sidebar = ({ isOpen }) => {
                         <span className="flex items-center">
                             <FontAwesomeIcon icon={faChalkboardUser} />
                             <NavLink
-                                to='/'
+                                to='/directorList'
                                 className='active:text-blue-400 hover:text-blue-700  px-4 flex items-center'
                                 onClick={toggleDropdown}
                                 

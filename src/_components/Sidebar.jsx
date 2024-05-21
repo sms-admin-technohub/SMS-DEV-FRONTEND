@@ -20,6 +20,7 @@ import {
 
 const Sidebar = ({ isOpen }) => {
   const [showDropdown1, setShowDropdown1] = useState(false);
+  const [showDropdown2, setShowDropdown2] = useState(false);
   return (
     <>
       <aside
@@ -100,12 +101,12 @@ const Sidebar = ({ isOpen }) => {
             <FontAwesomeIcon icon={faBuilding} />
             <span
               className=" px-6 py-2 rounded-sm cursor-pointer"
-              onClick={() => setShowDropdown1(!showDropdown1)}
+              onClick={() => setShowDropdown2(!showDropdown2)}
             >
               Classes
             </span>
 
-            {showDropdown1 && (
+            {showDropdown2 && (
               <ul className="space-y-5">
                 <li className="mt-2">
                   <NavLink

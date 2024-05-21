@@ -1,25 +1,35 @@
-import React from 'react';
-import { useForm } from 'react-hook-form';
+import React, { useState } from 'react';
 import axios from 'axios';
 
-function DirectorAdd(props) {
-  const Instance = axios.create({
-    baseURL:"http://127.0.0.1:8000"
-  })
-  const { register, handleSubmit, formState: { errors } } = useForm();
+function DirectorEdit(props) {
+  const [formData, setFormData] = useState({
+    first_name: '',
+    middle_name: '',
+    last_name: '',
+    email: '',
+    password: '',
+    phone_number: '',
+    gender: ''
+  });
 
-  const onSubmit = async (data) => {
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
     try {
-      const response = await Instance.post('/d/directors/', data);
-      console.log('Director has been added SUCCESSFULLYY \n ', response.data);
+      const response = await axios.post('http://your-backend-url/api/directors', formData);
+      console.log('Director added successfully:', response.data);
     } catch (error) {
-      console.error('Error is being encountered \n ', error);
+      console.error('Error adding director:', error);
     }
   };
 
   return (
     <div className="w-full">
-      <form onSubmit={handleSubmit(onSubmit)}>
+      <form onSubmit={handleSubmit}>
         <div className="">
           <div className="flex flex-col justify-between mt-10">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 px-4 mb-6">
@@ -29,27 +39,30 @@ function DirectorAdd(props) {
                   type="text"
                   className="w-full px-4 py-2 rounded border mb-2"
                   placeholder="First Name"
-                  {...register('first_name', { required: true })}
+                  name="first_name"
+                  value={formData.first_name}
+                  onChange={handleChange}
                 />
-                {errors.first_name && <span className="text-red-500">First name is required</span>}
-              </div>
+                </div>
               <div className="flex flex-col mb-4 secondLine">
                 <input
                   type="text"
                   className="w-full px-4 py-2 rounded border mb-2"
-                  placeholder="Middle Name"
-                  {...register('middle_name', { required: 'Middle name is required' })}
+                  placeholder="Second Name"
+                  name="middle_name"
+                  value={formData.middle_name}
+                  onChange={handleChange}
                 />
-                {errors.middle_name && <span className="text-red-500">{errors.middle_name.message}</span>}
               </div>
               <div className="flex flex-col mb-4 thirdLine">
                 <input
                   type="text"
                   className="w-full px-4 py-2 rounded border mb-2"
                   placeholder="Last Name"
-                  {...register('last_name', { required: true })}
+                  name="last_name"
+                  value={formData.last_name}
+                  onChange={handleChange}
                 />
-                {errors.last_name && <span className="text-red-500">Last name is required</span>}
               </div>
             </div>
 
@@ -60,32 +73,36 @@ function DirectorAdd(props) {
                   type="email"
                   className="w-full px-4 py-2 rounded border mb-2"
                   placeholder="Enter E-mail ID"
-                  {...register('email', { required: true })}
+                  name="email"
+                  value={formData.email}
+                  onChange={handleChange}
                 />
-                {errors.email && <span className="text-red-500">Email is required</span>}
                 <input
                   type="number"
                   className="w-full px-4 py-2 rounded border mb-2"
                   placeholder="Enter Phone number"
-                  {...register('phone_number', { required: true })}
+                  name="phone_number"
+                  value={formData.phone_number}
+                  onChange={handleChange}
                 />
-                {errors.phone_number && <span className="text-red-500">Phone number is required</span>}
               </div>
               <div className="flex flex-col mb-4 secondLine">
                 <input
                   type="password"
                   className="w-full px-4 py-2 rounded border mb-2"
                   placeholder="Enter Password"
-                  {...register('password', { required: true })}
+                  name="password"
+                  value={formData.password}
+                  onChange={handleChange}
                 />
-                {errors.password && <span className="text-red-500">Password is required</span>}
                 <input
                   type="text"
                   className="w-full px-4 py-2 rounded border mb-2"
                   placeholder="Enter gender"
-                  {...register('gender', { required: true })}
+                  name="gender"
+                  value={formData.gender}
+                  onChange={handleChange}
                 />
-                {errors.gender && <span className="text-red-500">Gender is required</span>}
               </div>
             </div>
           </div>
@@ -101,4 +118,4 @@ function DirectorAdd(props) {
   );
 }
 
-export default DirectorAdd;
+export default DirectorEdit;

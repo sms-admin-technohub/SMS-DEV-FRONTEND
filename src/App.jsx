@@ -1,6 +1,5 @@
 import Dashboard from './pages/dashboard/Dashboard'
 import { Routes, Route } from 'react-router-dom'
-import Departments from './pages/departments/Departments'
 import Students from './pages/students/Students'
 import Teachers from './pages/teachers/Teachers'
 import Subjects from './pages/subjects/Subjects'
@@ -17,6 +16,10 @@ import DirectorList from './pages/directors/DirectorList'
 import DirectorView from './pages/directors/DirectorView'
 import DirectorAdd from './pages/directors/DirectorAdd';
 import DirectorEdit from './pages/directors/DirectorEdit';
+import DepartmentList from './pages/departments/DepartmentList'
+import DepartmentView from './pages/departments/DepartmentView'
+import DepartmentAdd from './pages/departments/DepartmentAdd'
+import DepartmentEdit from './pages/departments/DepartmentEdit'
 
 function App() {
 
@@ -26,13 +29,16 @@ function App() {
       {/* main menu routes */}
       <Route path='/' element={<DefaultLayout />} >
         <Route path='/dashboard' element={<Dashboard />} />
-        <Route path='/departments' element={<Departments />} />
         <Route path='/students' element={<Students />} />
         <Route path='/teachers' element={<Teachers />} />
         <Route path='/directorList' element={<DirectorList />} />
         <Route path='/directorView' element={<DirectorView />} />
         <Route path='/directorEdit' element={<DirectorEdit />} />
         <Route path='/directorAdd' element={<DirectorAdd />} />
+        <Route path='/departmentList' element={<DepartmentList />} />
+        <Route path='/departmentView' element={<DepartmentView />} />
+        <Route path='/departmentEdit' element={<DepartmentEdit />} />
+        <Route path='/departmentAdd' element={<DepartmentAdd/>} />
         <Route path='/subjects' element={< Subjects />} />
         <Route path='/accounts' element={< Accounts />} />
 

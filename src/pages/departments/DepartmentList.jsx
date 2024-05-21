@@ -65,9 +65,8 @@ const DirectorList = () => {
           </div>
         </div>
       </div>
-
       <div className='mt-5'>
-        <h1>Directors List</h1>
+    <h1 className='text-left mt-5 ml-10 '>Department</h1>
         <Table columns={columns} data={directors} />
       </div>
     </div>

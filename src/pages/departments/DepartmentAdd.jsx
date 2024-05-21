@@ -3,14 +3,11 @@ import { useForm } from 'react-hook-form';
 import axios from 'axios';
 
 function DirectorAdd(props) {
-  const Instance = axios.create({
-    baseURL:"http://127.0.0.1:8000"
-  })
   const { register, handleSubmit, formState: { errors } } = useForm();
 
   const onSubmit = async (data) => {
     try {
-      const response = await Instance.post('/d/directors/', data);
+      const response = await axios.post('http://127.0.0.1:8000/d/directors/', data);
       console.log('Director has been added SUCCESSFULLYY \n ', response.data);
     } catch (error) {
       console.error('Error is being encountered \n ', error);

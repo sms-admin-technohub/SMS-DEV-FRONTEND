@@ -8,10 +8,10 @@ function Table({ columns, data }) {
     };
 
     return (
-        <div className='mx-10 my-10 sm:mx-8 md:mx-14 lg:mx-12 xl:mx-16'>
+        <div className='mx-10 my-4 sm:mx-8 md:mx-14 lg:mx-12 xl:mx-16'>
             <div className='flex flex-col sm:flex-row justify-between items-center'>
                 <div className='mb-10 mt-10  sm:mb-0'>
-                    <h1 className='text-3xl font-bold pt-4 py-10'>Directors</h1>
+                    {/* <h1 className='text-3xl font-bold pt-4 py-10'>Directors</h1> */}
                     <label htmlFor="entries" className="text-lg">Show </label>
                     <select id="entries" className="text-lg" value={entries} onChange={changeEntryy}>
                         <option value="10">10</option>

@@ -1,9 +1,8 @@
+
 import Dashboard from './pages/dashboard/Dashboard'
 import { Routes, Route } from 'react-router-dom'
-import Departments from './pages/departments/Departments'
 import Students from './pages/students/Students'
 import Teachers from './pages/teachers/Teachers'
-import Subjects from './pages/subjects/Subjects'
 import DefaultLayout from './_components/DefaultLayout'
 import Accounts from './pages/accounts/Accounts'
 import Events from './components/Events';
@@ -18,6 +17,11 @@ import DirectorView from './pages/directors/DirectorView'
 import DirectorAdd from './pages/directors/DirectorAdd';
 import DirectorEdit from './pages/directors/DirectorEdit';
 
+import SubjectList from './pages/subjects/SubjectList';
+import SubjectView from './pages/subjects/SubjectView';
+import SubjectAdd from './pages/subjects/SubjectAdd';
+import SubjectEdit from './pages/subjects/SubjectEdit';
+
 function App() {
 
   return (
@@ -26,14 +30,16 @@ function App() {
       {/* main menu routes */}
       <Route path='/' element={<DefaultLayout />} >
         <Route path='/dashboard' element={<Dashboard />} />
-        <Route path='/departments' element={<Departments />} />
         <Route path='/students' element={<Students />} />
         <Route path='/teachers' element={<Teachers />} />
         <Route path='/directorList' element={<DirectorList />} />
         <Route path='/directorView' element={<DirectorView />} />
         <Route path='/directorEdit' element={<DirectorEdit />} />
         <Route path='/directorAdd' element={<DirectorAdd />} />
-        <Route path='/subjects' element={< Subjects />} />
+        <Route path='/subjectList' element={< SubjectList />} />
+        <Route path='/subjectView' element={< SubjectView />} />
+        <Route path='/subjectAdd' element={< SubjectAdd />} />
+        <Route path='/subjectEdit' element={< SubjectEdit />} />
         <Route path='/accounts' element={< Accounts />} />
 
 

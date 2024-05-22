@@ -5,9 +5,19 @@ import { faGraduationCap, faGear, faNewspaper, faBook, faTable, faCalendarDay, f
 
 const Sidebar = ({ isOpen }) => {
     const [showDropdown, setShowDropdown] = useState(false);
+    const [showDropdown2, setShowDropdown2] = useState(false);
+    const [showDropdown3, setShowDropdown3] = useState(false);
 
     const toggleDropdown = () => {
         setShowDropdown(!showDropdown);
+    };
+    
+    const toggleDropdown2 = () => {
+        setShowDropdown2(!showDropdown2);
+    };
+
+    const toggleDropdown3 = () => {
+        setShowDropdown3(!showDropdown3);
     };
 
     return (
@@ -57,7 +67,7 @@ const Sidebar = ({ isOpen }) => {
                         <span className="flex items-center">
                             <FontAwesomeIcon icon={faChalkboardUser} />
                             <NavLink
-                                to='/'
+                                to='/directorList'
                                 className='active:text-blue-400 hover:text-blue-700  px-4 flex items-center'
                                 onClick={toggleDropdown}
                                 
@@ -95,28 +105,97 @@ const Sidebar = ({ isOpen }) => {
                     </li>
 
                     {/* Ending of Directors dropdown */}
-                    <li>
-                        <span>
-                            <FontAwesomeIcon icon={faBuilding} />
+
+
+
+                    {/* Department dropdown */}
+
+                    <li className="relative">
+                        <span className="flex items-center">
+                            <FontAwesomeIcon icon={faChalkboardUser} />
                             <NavLink
-                                to='/departments'
-                                className=' px-4'
+                                to='/departmentList'
+                                className='active:text-blue-400 hover:text-blue-700  px-4 flex items-center'
+                                onClick={toggleDropdown2}
+                                
                             >
-                                Departments
+                                Department
+                                 &nbsp;&nbsp;&nbsp;&nbsp;
+                                <FontAwesomeIcon icon={faAngleDown} className="ml-1 transition-transform duration-300 transform" style={{ transform: showDropdown2 ? 'rotate(360deg)' : 'rotate(270deg)' }} />
                             </NavLink>
                         </span>
+                        {/* Dropdown menu */}
+                        {showDropdown2 && (
+                            <ul className="dropdown-menu pl-6 mt-2 text-gray-500 bg-white">
+                                <li>
+                                    <NavLink to='/departmentList' className='pl-2 block py-1 rounded-md hover:text-white hover:bg-blue-600' onClick={() => setShowDropdown2(false)}>
+                                        Department List
+                                    </NavLink>
+                                </li>
+                                <li>
+                                    <NavLink to='/departmentView' className='pl-2 block py-1 rounded-md  hover:text-white hover:bg-blue-600' onClick={() => setShowDropdown2(false)}>
+                                        Department View
+                                    </NavLink>
+                                </li>
+                                <li>
+                                    <NavLink to='/departmentAdd' className='pl-2 block py-1 rounded-md  hover:text-white hover:bg-blue-600' onClick={() => setShowDropdown2(false)}>
+                                        Department Add
+                                    </NavLink>
+                                </li>
+                                <li>
+                                    <NavLink to='/departmentEdit' className='pl-2 block py-1 rounded-md  hover:text-white hover:bg-blue-600' onClick={() => setShowDropdown2(false)}>
+                                        Department Edit
+                                    </NavLink>
+                                </li>
+                            </ul>
+                        )}
                     </li>
-                    <li>
-                        <span>
-                            <FontAwesomeIcon icon={faBookOpenReader} />
+
+
+                    {/* Subject dropdown */}
+
+                    <li className="relative">
+                        <span className="flex items-center">
+                        <FontAwesomeIcon icon={faBookOpenReader} />
                             <NavLink
-                                to='/subjects'
-                                className=' px-4'
+                                to='/subjectList'
+                                className='active:text-blue-400 hover:text-blue-700  px-4 flex items-center'
+                                onClick={toggleDropdown3}
+                                
                             >
-                                Subjects
+                                Subject
+                                 &nbsp;&nbsp;&nbsp;&nbsp;
+                                <FontAwesomeIcon icon={faAngleDown} className="ml-1 transition-transform duration-300 transform" style={{ transform: showDropdown3 ? 'rotate(360deg)' : 'rotate(270deg)' }} />
                             </NavLink>
                         </span>
+                        {/* Dropdown menu */}
+                        {showDropdown3 && (
+                            <ul className="dropdown-menu pl-6 mt-2 text-gray-500 bg-white">
+                                <li>
+                                    <NavLink to='/subjectlist' className='pl-2 block py-1 rounded-md hover:text-white hover:bg-blue-600' onClick={() => setShowDropdown3(false)}>
+                                        Subject List
+                                    </NavLink>
+                                </li>
+                                <li>
+                                    <NavLink to='/subjectView' className='pl-2 block py-1 rounded-md  hover:text-white hover:bg-blue-600' onClick={() => setShowDropdown3(false)}>
+                                        Subject View
+                                    </NavLink>
+                                </li>
+                                <li>
+                                    <NavLink to='/subjectAdd' className='pl-2 block py-1 rounded-md  hover:text-white hover:bg-blue-600' onClick={() => setShowDropdown3(false)}>
+                                        Subject Add
+                                    </NavLink>
+                                </li>
+                                <li>
+                                    <NavLink to='/subjectEdit' className='pl-2 block py-1 rounded-md  hover:text-white hover:bg-blue-600' onClick={() => setShowDropdown3(false)}>
+                                        Subject Edit
+                                    </NavLink>
+                                </li>
+                            </ul>
+                        )}
                     </li>
+
+                   
                 </ul>
                 {/* main menu end */}
                   {/* Managment menu start */}

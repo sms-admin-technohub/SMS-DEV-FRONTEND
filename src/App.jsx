@@ -32,6 +32,10 @@ import ClassView from './pages/class/ClassView'
 import AddClassRoomTable from './pages/classroom_table/AddClassRoomTable'
 import EditClassroomTable from './pages/classroom_table/EditClassRoomTable'
 import ClassroomTableList from './pages/classroom_table/ClassroomTableList'
+import AddPeriod from './pages/periods/AddPeriod'
+import EditPeriod from './pages/periods/EditPeriod'
+import PeriodList from './pages/periods/PeriodList'
+import PeriodView from './pages/periods/PeriodView'
 
 function App() {
 
@@ -84,6 +88,12 @@ function App() {
         <Route path='/editclassroomtable' element={<EditClassroomTable/>}/>
         <Route path='/classroomtablelist' element={<ClassroomTableList/>}/>
         <Route path='/classroomtableview' element={<ClassroomTableList/>}/>
+
+        {/* Periods routes  */}
+        <Route path='/addperiod' element={<AddPeriod/>}></Route>
+        <Route path='/editperiod' element={<EditPeriod/>}></Route>
+        <Route path='/periodlist' element={<PeriodList/>}></Route>
+        <Route path='/periodview' element={<PeriodView/>}></Route>
 
 
 

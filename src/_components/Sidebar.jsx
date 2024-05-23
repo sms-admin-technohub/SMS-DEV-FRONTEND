@@ -25,6 +25,7 @@ const Sidebar = ({ isOpen }) => {
   const [showDropdown2, setShowDropdown2] = useState(false);
   const [showDropdown3, setShowDropdown3] = useState(false);
   const [showDropdown4, setShowDropdown4] = useState(false);
+  const [showDropdown5, setShowDropdown5] = useState(false);
 
 
 
@@ -244,6 +245,54 @@ const Sidebar = ({ isOpen }) => {
                     className="space-y-3 mt-2  ml-2 px-2 py-2 rounded-md"
                   >
                     Classroom Table View
+                  </NavLink>
+                </li>
+              </ul>
+            )}
+          </li>
+
+          {/* Periods dropdown  */}
+          <li>
+            <FontAwesomeIcon icon={faBuilding} />
+            <span
+              className=" px-6 py-2 rounded-sm cursor-pointer"
+              onClick={() => setShowDropdown5(!showDropdown5)}
+            >
+              Periods 
+            </span>
+
+            {showDropdown5 && (
+              <ul className="space-y-5">
+                <li className="mt-2">
+                  <NavLink
+                    to="/addperiod"
+                    className="space-y-3 mt-2 ml-2 px-6 py-2 rounded-sm"
+                  >
+                    Add Period 
+                  </NavLink>
+                </li>
+                <li className="mt-2">
+                  <NavLink
+                    to="/periodlist"
+                    className="space-y-5 mt-2 ml-2 px-6 py-2 rounded-md"
+                  >
+                    Period list
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink
+                    to="/editperiod"
+                    className="space-y-3 mt-2  ml-2 px-6 py-2 rounded-md"
+                  >
+                    Edit Period 
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink
+                    to="/periodview"
+                    className="space-y-3 mt-2  ml-2 px-6 py-2 rounded-md"
+                  >
+                    Period View
                   </NavLink>
                 </li>
               </ul>

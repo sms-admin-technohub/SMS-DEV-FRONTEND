@@ -46,7 +46,7 @@ const Sidebar = ({ isOpen }) => {
             <span>
               <FontAwesomeIcon icon={faTableCellsLarge} />
               <NavLink to="/dashboard" className=" px-4">
-                Dashboard
+                Dashboards 
               </NavLink>
             </span>
           </li>

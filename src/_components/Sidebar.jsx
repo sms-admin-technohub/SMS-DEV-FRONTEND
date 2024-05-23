@@ -5,9 +5,14 @@ import { faGraduationCap, faGear, faNewspaper, faBook, faTable, faCalendarDay, f
 
 const Sidebar = ({ isOpen }) => {
     const [showDropdown, setShowDropdown] = useState(false);
+    const [showDropdown4, setShowDropdown4] = useState(false);
 
     const toggleDropdown = () => {
         setShowDropdown(!showDropdown);
+    };
+
+    const toggleDropdown4 = () => {
+        setShowDropdown4(!showDropdown4);
     };
 
     return (
@@ -117,6 +122,48 @@ const Sidebar = ({ isOpen }) => {
                             </NavLink>
                         </span>
                     </li>
+                            {/* { Terms Dropdown } */}
+
+
+                    <li className="relative">
+                        <span className="flex items-center">
+                            <FontAwesomeIcon icon={faChalkboardUser} />
+                            <NavLink
+                                to='/'
+                                className='active:text-blue-400 hover:text-blue-700  px-4 flex items-center'
+                                onClick={toggleDropdown4}
+                                
+                            >
+                                Terms
+                                 &nbsp;&nbsp;&nbsp;&nbsp;
+                                <FontAwesomeIcon icon={faAngleDown} className="ml-1 transition-transform duration-300 transform" style={{ transform: showDropdown ? 'rotate(360deg)' : 'rotate(270deg)' }} />
+                            </NavLink>
+                        </span>
+                        {/* Dropdown menu */}
+                        {showDropdown4 && (
+                            <ul className="dropdown-menu pl-6 mt-2 text-gray-500 bg-white">
+                                <li>
+                                    <NavLink to='/termList' className='pl-2 block py-1 rounded-md hover:text-white hover:bg-blue-600' onClick={() => setShowDropdown4(false)}>
+                                        Terms List
+                                    </NavLink>
+                                </li>
+                               
+                                <li>
+                                    <NavLink to='/termAdd' className='pl-2 block py-1 rounded-md  hover:text-white hover:bg-blue-600' onClick={() => setShowDropdown4(false)}>
+                                        Terms Add
+                                    </NavLink>
+                                </li>
+                                <li>
+                                    <NavLink to='/termEdit' className='pl-2 block py-1 rounded-md  hover:text-white hover:bg-blue-600' onClick={() => setShowDropdown4(false)}>
+                                        Terms Edit
+                                    </NavLink>
+                                </li>
+                            </ul>
+                        )}
+                    </li>
+
+
+
                 </ul>
                 {/* main menu end */}
                   {/* Managment menu start */}

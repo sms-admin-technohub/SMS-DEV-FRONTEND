@@ -17,6 +17,9 @@ import DirectorList from './pages/directors/DirectorList'
 import DirectorView from './pages/directors/DirectorView'
 import DirectorAdd from './pages/directors/DirectorAdd';
 import DirectorEdit from './pages/directors/DirectorEdit';
+import TermsAdd from './pages/terms/TermAdd'
+import TermsEdit from './pages/terms/TermEdit'
+import TermsList from './pages/terms/TermList'
 
 function App() {
 
@@ -35,6 +38,9 @@ function App() {
         <Route path='/directorAdd' element={<DirectorAdd />} />
         <Route path='/subjects' element={< Subjects />} />
         <Route path='/accounts' element={< Accounts />} />
+        <Route path='/termAdd' element={< TermsAdd />} />
+        <Route path='/termEdit' element={< TermsEdit />} />
+        <Route path='/termList' element={< TermsList />} />
 
 
         {/* managment menu routes */}

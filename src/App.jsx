@@ -36,6 +36,10 @@ import AddPeriod from './pages/periods/AddPeriod'
 import EditPeriod from './pages/periods/EditPeriod'
 import PeriodList from './pages/periods/PeriodList'
 import PeriodView from './pages/periods/PeriodView'
+import AddGuardian from './pages/guardian/AddGuardian'
+import EditGuardian from './pages/guardian/EditGuardian'
+import GuardianList from './pages/guardian/GuardianList'
+import GuardianView from './pages/guardian/GuardianView'
 
 function App() {
 
@@ -94,6 +98,12 @@ function App() {
         <Route path='/editperiod' element={<EditPeriod/>}></Route>
         <Route path='/periodlist' element={<PeriodList/>}></Route>
         <Route path='/periodview' element={<PeriodView/>}></Route>
+
+        {/* Guardian routes  */}
+        <Route path='addguardian' element={<AddGuardian/>}></Route>
+        <Route path='editguardian' element={<EditGuardian/>}></Route>
+        <Route path='guardianlist' element={<GuardianList/>}></Route>
+        <Route path='guardianview' element={<GuardianView/>}></Route>
 
 
 

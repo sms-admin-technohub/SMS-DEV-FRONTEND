@@ -26,6 +26,8 @@ const Sidebar = ({ isOpen }) => {
   const [showDropdown3, setShowDropdown3] = useState(false);
   const [showDropdown4, setShowDropdown4] = useState(false);
   const [showDropdown5, setShowDropdown5] = useState(false);
+  const [showDropdown6, setShowDropdown6] = useState(false);
+
 
 
 
@@ -245,6 +247,54 @@ const Sidebar = ({ isOpen }) => {
                     className="space-y-3 mt-2  ml-2 px-2 py-2 rounded-md"
                   >
                     Classroom Table View
+                  </NavLink>
+                </li>
+              </ul>
+            )}
+          </li>
+
+           {/* Guardian dropdown */}
+           <li>
+            <FontAwesomeIcon icon={faBuilding} />
+            <span
+              className=" px-6 py-2 rounded-sm cursor-pointer"
+              onClick={() => setShowDropdown6(!showDropdown6)}
+            >
+              Guardian
+            </span>
+
+            {showDropdown6 && (
+              <ul className="space-y-5">
+                <li className="mt-2">
+                  <NavLink
+                    to="/addguardian"
+                    className="space-y-3 mt-2 ml-2 px-8 py-2 rounded-sm"
+                  >
+                    Add Guardian
+                  </NavLink>
+                </li>
+                <li className="">
+                  <NavLink
+                    to="/guardianlist"
+                    className="space-y-5 mt-2 ml-2 px-8 py-2 rounded-md"
+                  >
+                    Guardian list
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink
+                    to="/editguardian"
+                    className="space-y-3 mt-2  ml-2 px-8 py-2 rounded-md"
+                  >
+                    Edit Guardian
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink
+                    to="/guardianview"
+                    className="space-y-3 mt-2  ml-2 px-8 py-2 rounded-md"
+                  >
+                    Guardian View
                   </NavLink>
                 </li>
               </ul>

@@ -40,6 +40,10 @@ import AddGuardian from './pages/guardian/AddGuardian'
 import EditGuardian from './pages/guardian/EditGuardian'
 import GuardianList from './pages/guardian/GuardianList'
 import GuardianView from './pages/guardian/GuardianView'
+import AddTerm from './pages/term/AddTerm'
+import TermList from './pages/term/TermList'
+import TermView from './pages/term/TermView'
+import EditTerm from './pages/term/EditTerm'
 
 function App() {
 
@@ -105,7 +109,11 @@ function App() {
         <Route path='guardianlist' element={<GuardianList/>}></Route>
         <Route path='guardianview' element={<GuardianView/>}></Route>
 
-        
+        {/* Term routes  */}
+        <Route path='addterm' element={<AddTerm/>}></Route>
+        <Route path='termlist' element={<TermList/>}></Route>
+        <Route path='termview' element={<TermView/>}></Route>
+        <Route path='editterm' element={<EditTerm/>}></Route>
 
 
 

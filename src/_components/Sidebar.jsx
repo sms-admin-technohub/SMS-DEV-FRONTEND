@@ -27,6 +27,8 @@ const Sidebar = ({ isOpen }) => {
   const [showDropdown4, setShowDropdown4] = useState(false);
   const [showDropdown5, setShowDropdown5] = useState(false);
   const [showDropdown6, setShowDropdown6] = useState(false);
+  const [showDropdown7, setShowDropdown7] = useState(false);
+
 
 
 
@@ -247,6 +249,54 @@ const Sidebar = ({ isOpen }) => {
                     className="space-y-3 mt-2  ml-2 px-2 py-2 rounded-md"
                   >
                     Classroom Table View
+                  </NavLink>
+                </li>
+              </ul>
+            )}
+          </li>
+
+          {/* Term dropdown */}
+          <li>
+            <FontAwesomeIcon icon={faBuilding} />
+            <span
+              className=" px-6 py-2 rounded-sm cursor-pointer"
+              onClick={() => setShowDropdown7(!showDropdown7)}
+            >
+              Term
+            </span>
+
+            {showDropdown7 && (
+              <ul className="space-y-5">
+                <li className="mt-2">
+                  <NavLink
+                    to="/termlist"
+                    className="space-y-5 mt-2 ml-2 px-8 py-2 rounded-md"
+                  >
+                    Term list
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink
+                    to="/addterm"
+                    className="space-y-3 mt-2 ml-2 px-8 py-2 rounded-sm"
+                  >
+                    Add Term
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink
+                    to="/editterm"
+                    className="space-y-3 mt-2  ml-2 px-8 py-2 rounded-md"
+                  >
+                    Edit Term
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink
+                    to="/termview"
+                    className="space-y-3 mt-2  ml-2 px-8 py-2 rounded-md"
+                  >
+                    Term View
                   </NavLink>
                 </li>
               </ul>

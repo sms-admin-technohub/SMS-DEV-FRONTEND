@@ -114,6 +114,7 @@ function App() {
         <Route path='termlist' element={<TermList/>}></Route>
         <Route path='termview' element={<TermView/>}></Route>
         <Route path='editterm' element={<EditTerm/>}></Route>
+        
 
 
 

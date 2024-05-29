@@ -6,6 +6,7 @@ function TermsAdd(props) {
   const { register, handleSubmit, formState: { errors } } = useForm();
 
   const onSubmit = async (data) => {
+     
     try {
       const response = await axios.post('http://127.0.0.1:8000/terms/', data);
       console.log('Director added successfully:', response.data);

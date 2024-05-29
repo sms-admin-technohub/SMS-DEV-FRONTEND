@@ -12,6 +12,7 @@ function TermsAdd(props) {
       console.log('Director added successfully:', response.data);
     } catch (error) {
       console.error('Error adding director:', error);
+      
     }
   };
 

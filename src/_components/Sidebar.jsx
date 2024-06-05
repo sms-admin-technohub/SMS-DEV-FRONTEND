@@ -50,7 +50,7 @@ const Sidebar = ({ isOpen }) => {
 
           {/* Teacher dropdown */}
           <li>
-            <FontAwesomeIcon icon={faBuilding} />
+            <FontAwesomeIcon icon={faChalkboardUser} />
             <span
               className=" px-6 py-2 rounded-sm cursor-pointer"
               onClick={() => setShowDropdown1(!showDropdown1)}

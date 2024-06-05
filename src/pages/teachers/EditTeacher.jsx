@@ -8,35 +8,19 @@ import { Link } from 'react-router-dom';
 const EditTeacher = () => {
     //axios instance of an end point ---------
     const Instance = axios.create({
-        baseURL: '192.168.29.3:8000'
+        baseURL: 'https://ec76-2409-40c4-18d-58b6-b579-d6aa-c3db-9193.ngrok-free.app'
     })
     const { register, handleSubmit, formState: { errors }, reset } = useForm();
     const [file, setFile] = useState(null);
     //function which take the data from field and send it to the db.
     const onSubmit = async (data) => {
-        const UpdatedTecherdata = {
-            "id": data.id,
-            "phone_no": data.phone_no,
-            "gender": data.gender,
-            "adhaar_no": data.adhaar_no,
-            "pan_no": data.pan_no,
-            "qualification": data.qualification,
-            "first_name": data.first_name,
-            "middle_name": data.middle_name,
-            "last_name": data.last_name,
-            "email": data.email,
-            "password": data.password
-        };
-        const fetchdata = async () => {
             try {
-                const response = await Instance.put('t/teacher/1/', UpdatedTecherdata)
-                console.log('data submitted sucessfully', response.data)
+                const response = await Instance.put('/t/teacher/14/', data)
+                console.log('data submitted sucessfully via put req', response.data)
             } catch (error) {
-                console.log('getting error', error)
+                console.log('error occur in edit', error)
             }
-        };
-        fetchdata();
-        reset();
+        // reset();
     }
     const handleFileChange = (e) => {
         setFile(e.target.files[0]);

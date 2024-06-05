@@ -1,51 +1,35 @@
 import axios from 'axios';
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { Link } from 'react-router-dom';
 
 const AddTeacher = () => {
     // axios instance of an end point
-    const Instance = axios.create({
-        baseURL: '192.168.29.3:8000'
-    });
+    // const Instance = axios.create({
+    //     baseURL: 'https://e50a-2409-40c4-18d-58b6-b579-d6aa-c3db-9193.ngrok-free.app'
+    // });
 
-    const { register, handleSubmit, formState: { errors },reset } = useForm();
+    // Here is the reset function which is declared but not used
+    const { register, handleSubmit, formState: { errors }, reset } = useForm();
     const [file, setFile] = useState(null);
 
     // Function to handle form submission
     const onSubmit = async (data) => {
-        const teacherData =  {
-            "first_name": data.first_name,
-            "middle_name": data.middle_name,
-            "last_name": data.last_name,
-            "password": data.password,
-            "email": data.email,
-            "phone_no": data.phone_no,
-            "gender": data.gender,
-            "adhaar_no": data.adhaar_no,
-            "pan_no": data.pan_no,
-            "qualification": data.qualification,
-        };
-        //hitting requesst to the server---
-        const dataFetch = async () => {
-            try {
-                const res = await Instance.post('/t/teacher/', teacherData)
-                console.log('data is sucessfully submitted', res.data)
-            } catch (error) {
-                console.log('getting error', error)
-            }
+        try {
+            const res = await axios.post('https://e50a-2409-40c4-18d-58b6-b579-d6aa-c3db-9193.ngrok-free.app/t/teacher/', data);
+            console.log('Data is successfully submitted via post req', res.data);
+        } catch (error) {
+            console.log('Error submitting data via post req', error.message);
         }
-        dataFetch();
-        reset();
+        // reset();
     };
 
-    // Function to handle file change----
+    // Function to handle file change
     const handleFileChange = (e) => {
         setFile(e.target.files[0]);
     }
 
     return (
-
         <div className='container bg-gray-100 h-screen w-full overflow-hidden'>
             <div className='flex justify-between'>
                 <h1 className='pl-8 pt-4 font-semibold text-2xl'>Add Teachers</h1>
@@ -160,4 +144,5 @@ const AddTeacher = () => {
         </div>
     );
 };
+
 export default AddTeacher;

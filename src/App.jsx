@@ -36,19 +36,19 @@ function App() {
         <Route path='/accounts' element={< Accounts />} />
 
         {/* Teacher dropdown routes */}
-        <Route path='/addteacher' element={<AddTeacher/>}/>
-        <Route path='/editeacher' element={<EditTeacher/>}/>
-        <Route path='/teacherlist' element={<TeacherList/>}/>
-        <Route path='/teacherview' element={<TeacherView/>}/>
+        <Route path='/addteacher' element={<AddTeacher />} />
+        <Route path='/edit-teacher' element={<EditTeacher />} />
+        <Route path='/teacherlist' element={<TeacherList />} />
+        <Route path='/teacherview' element={<TeacherView />} />
 
         {/* Class dropdown routes */}
-        <Route path='/addclass' element={<AddClass/>}></Route>
-        <Route path='/editclass' element={<EditClass/>}></Route>
-        <Route path='/classlist' element={<ClassList/>}></Route>
-        <Route path='/classview' element={<ClassView/>}></Route>
+        <Route path='/addclass' element={<AddClass />}></Route>
+        <Route path='/editclass' element={<EditClass />}></Route>
+        <Route path='/classlist' element={<ClassList />}></Route>
+        <Route path='/classview' element={<ClassView />}></Route>
 
 
-        
+
 
 
         {/* managment menu routes */}

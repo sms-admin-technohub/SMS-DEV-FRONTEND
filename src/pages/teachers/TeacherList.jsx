@@ -4,21 +4,14 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 
 const TeacherList = () => {
-    // axios Instance----
     axios.defaults.headers.common["ngrok-skip-browser-warning"] = "any value";
-    // const Instance = axios.create({
-    //     baseURL: 'https://e50a-2409-40c4-18d-58b6-b579-d6aa-c3db-9193.ngrok-free.app'
-    // });
-
     const [teachers, setTeachers] = useState([]);
     const { register, handleSubmit } = useForm();
 
-    // Below code is responsible for fetching data from server--------
     useEffect(() => {
         const fetchTeachers = async () => {
             try {
-                // const response = await Instance.get('/t/teacher/');
-                const response = await axios.get('https://e50a-2409-40c4-18d-58b6-b579-d6aa-c3db-9193.ngrok-free.app/t/teacher/');
+                const response = await axios.get(`https://bc76-61-0-151-10.ngrok-free.app/t/teacher/`);
                 setTeachers(response.data)
             } catch (error) {
                 console.error('Error fetching teachers:', error.message);
@@ -28,7 +21,6 @@ const TeacherList = () => {
         fetchTeachers();
     }, []);
 
-    // Toggle the checkbox---
     const handleCheckboxChange = (teacherId) => {
         const updatedTeachers = teachers.map(teacher =>
             teacher.id === teacherId ? { ...teacher, isChecked: !teacher.isChecked } : teacher
@@ -36,16 +28,26 @@ const TeacherList = () => {
         setTeachers(updatedTeachers);
     };
 
-    // Below code is responsible for the form submission; form data is used to filter out teacher list------
     const onSubmit = async (data) => {
         try {
-            const response = await Instance.get('/t/teacher/', { params: data });
+            const response = await axios.get('/t/teacher/', { params: data });
             console.log('Response received successfully:', response.data);
             setTeachers(response.data);
         } catch (error) {
             console.error('Error occur in view:', error.message);
         }
     };
+    const deleteItem = async (teacherId) => {
+        try {
+            await axios.delete('https://bc76-61-0-151-10.ngrok-free.app/t/teacher/11/')
+            setTeachers(teachers.filter(teacher => teacher.id !== teacherId))
+            console.log('teacher record deleted')
+        } catch (error) {
+            console.log('error in delete', error.message)
+
+        }
+
+    }
 
     return (
         <div className='container bg-gray-100 h-screen w-full overflow-hidden'>
@@ -91,7 +93,7 @@ const TeacherList = () => {
                 </form>
             </div>
             <div className='form bg-white mt-8 mx-6 rounded-lg'>
-                {/* <div className="flex justify-between pt-6 mx-6">
+                <div className="flex justify-between pt-6 mx-6">
                     <div className='text text-start pl-3 pt-4 font-bold text-2xl'><h1>Teachers</h1></div>
                     <div className="flex">
                         <button className="flex items-center px-2 mt-2 text-gray-700 bg-blue-500 rounded-md hover:bg-sky-400 focus:outline-none focus:bg-gray-200">
@@ -120,7 +122,7 @@ const TeacherList = () => {
                             <Link to="/addstudents">+</Link>
                         </button>
                     </div>
-                </div> */}
+                </div>
                 <div className="container mx-auto mt-6">
                     <div className="overflow-x-auto">
                         <table className="min-w-full divide-y divide-gray-200">
@@ -128,9 +130,9 @@ const TeacherList = () => {
                                 <tr>
                                     <th scope="col" className="px-6 py-3 text-left text-semibold text-sm tracking-wider">CheckBox</th>
                                     <th scope="col" className="px-6 py-3 text-left text-sm text-semibold tracking-wider">Teacher's Id</th>
-                                    <th scope="col" className="px-6 py-3 text-left text-sm tracking-wider">First Name</th>
+                                    <th scope="col" className="px-6 py-3 text-left text-sm text-semibold tracking-wider">First Name</th>
                                     <th scope="col" className="px-6 py-3 text-left text-semibold text-sm tracking-wider">Middle Name</th>
-                                    <th scope="col" className="px-6 py-3 text-left text-semibold text-sm uppercase tracking-wider">Last Name</th>
+                                    <th scope="col" className="px-6 py-3 text-left text-semibold text-sm tracking-wider">Last Name</th>
                                     <th scope="col" className="px-6 py-3 text-left text-semibold text-sm tracking-wider">Mobile Number</th>
                                     <th scope="col" className="px-6 py-3 text-left text-semibold text-sm tracking-wider">Gender</th>
                                     <th scope="col" className="px-6 py-3 text-left text-semibold text-sm tracking-wider">Adhaar Number</th>
@@ -160,7 +162,7 @@ const TeacherList = () => {
                                         <td className="px-6 py-4 text-sm text-gray-500 whitespace-nowrap">{teacher.pan_no}</td>
                                         <td className="px-6 py-4 text-sm text-gray-500 whitespace-nowrap">{teacher.qualification}</td>
                                         <td className="px-6 py-4 text-sm text-gray-500 whitespace-nowrap">{teacher.email}</td>
-                                        <td className="px-6 py-4 text-sm text-gray-500 whitespace-nowrap"><button className='bg-red-400 text-white p-3 rounded-lg'>Delete</button></td>
+                                        <td className="px-6 py-4 text-sm text-gray-500 whitespace-nowrap"><button onClick={() => deleteItem(teacher.id)} className='bg-red-800 text-white p-3 rounded-lg'>Delete</button></td>
                                     </tr>
                                 ))}
                             </tbody>

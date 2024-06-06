@@ -1,26 +1,20 @@
-
-
 import axios from 'axios';
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { Link } from 'react-router-dom';
 
 const EditTeacher = () => {
-    //axios instance of an end point ---------
-    const Instance = axios.create({
-        baseURL: 'https://ec76-2409-40c4-18d-58b6-b579-d6aa-c3db-9193.ngrok-free.app'
-    })
+    axios.defaults.headers.common["ngrok-skip-browser-warning"] = "any value";
     const { register, handleSubmit, formState: { errors }, reset } = useForm();
     const [file, setFile] = useState(null);
-    //function which take the data from field and send it to the db.
     const onSubmit = async (data) => {
-            try {
-                const response = await Instance.put('/t/teacher/14/', data)
-                console.log('data submitted sucessfully via put req', response.data)
-            } catch (error) {
-                console.log('error occur in edit', error)
-            }
-        // reset();
+        try {
+            const response = await axios.put('https://bc76-61-0-151-10.ngrok-free.app/t/teacher/11/', data)
+            console.log('data submitted sucessfully via put req', response.data)
+        } catch (error) {
+            console.log('error occur in edit', error)
+        }
+        reset();
     }
     const handleFileChange = (e) => {
         setFile(e.target.files[0]);
@@ -141,7 +135,8 @@ const EditTeacher = () => {
                     <div className="flex justify-start mb-4 pb-2">
                         <div className="mr-4">
                             <label className="block text-sm font-bold mb-2 "></label>
-                            <input onChange={handleFileChange} type="file" />
+                            <input onChange={handleFileChange} type="file"
+                            />
                         </div>
                     </div>
 

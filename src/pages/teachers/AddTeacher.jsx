@@ -4,27 +4,20 @@ import { useForm } from 'react-hook-form';
 import { Link } from 'react-router-dom';
 
 const AddTeacher = () => {
-    // axios instance of an end point
-    // const Instance = axios.create({
-    //     baseURL: 'https://e50a-2409-40c4-18d-58b6-b579-d6aa-c3db-9193.ngrok-free.app'
-    // });
 
-    // Here is the reset function which is declared but not used
     const { register, handleSubmit, formState: { errors }, reset } = useForm();
     const [file, setFile] = useState(null);
 
-    // Function to handle form submission
     const onSubmit = async (data) => {
         try {
-            const res = await axios.post('https://e50a-2409-40c4-18d-58b6-b579-d6aa-c3db-9193.ngrok-free.app/t/teacher/', data);
+            const res = await axios.post(`https://bc76-61-0-151-10.ngrok-free.app/t/teacher/`, data);
             console.log('Data is successfully submitted via post req', res.data);
         } catch (error) {
             console.log('Error submitting data via post req', error.message);
         }
-        // reset();
+        reset();
     };
 
-    // Function to handle file change
     const handleFileChange = (e) => {
         setFile(e.target.files[0]);
     }

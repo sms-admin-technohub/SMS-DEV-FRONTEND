@@ -37,7 +37,7 @@ function App() {
 
         {/* Teacher dropdown routes */}
         <Route path='/addteacher' element={<AddTeacher />} />
-        <Route path='/edit-teacher' element={<EditTeacher />} />
+        <Route path='/editeacher' element={<EditTeacher />} />
         <Route path='/teacherlist' element={<TeacherList />} />
         <Route path='/teacherview' element={<TeacherView />} />
 

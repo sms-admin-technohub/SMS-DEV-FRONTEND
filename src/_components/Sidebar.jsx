@@ -78,7 +78,7 @@ const Sidebar = ({ isOpen }) => {
                 </li>
                 <li>
                   <NavLink
-                    to="/edit-teacher"
+                    to="/editeacher"
                     className="space-y-3 mt-2  ml-2 px-8 py-2 rounded-md"
                   >
                     Edit teacher

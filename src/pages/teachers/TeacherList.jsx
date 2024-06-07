@@ -1,18 +1,22 @@
 import React, { useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const TeacherList = () => {
     axios.defaults.headers.common["ngrok-skip-browser-warning"] = "any value";
+    //states-----
     const [teachers, setTeachers] = useState([]);
-    const { register, handleSubmit } = useForm();
+    const [findTeacher, setFindTeacher] = useState([]);
+    const { register, handleSubmit, reset } = useForm();
+    const navigate = useNavigate();
 
     useEffect(() => {
         const fetchTeachers = async () => {
             try {
-                const response = await axios.get(`https://bc76-61-0-151-10.ngrok-free.app/t/teacher/`);
-                setTeachers(response.data)
+                const response = await axios.get(`https://4cb1-2409-40c4-d-52d5-58ca-6992-f9d6-d9e0.ngrok-free.app/t/teacher/`);
+                setTeachers(response.data);
+                setFindTeacher(response.data);
             } catch (error) {
                 console.error('Error fetching teachers:', error.message);
             }
@@ -22,35 +26,39 @@ const TeacherList = () => {
     }, []);
 
     const handleCheckboxChange = (teacherId) => {
-        const updatedTeachers = teachers.map(teacher =>
+        const updatedTeachers = findTeacher.map(teacher =>
             teacher.id === teacherId ? { ...teacher, isChecked: !teacher.isChecked } : teacher
         );
-        setTeachers(updatedTeachers);
+        setFindTeacher(updatedTeachers);
     };
 
-    const onSubmit = async (data) => {
+    const onSubmit = (data) => {
+        const filtered = teachers.filter(teacher =>
+            (!data.First_name || teacher.first_name.toLowerCase().includes(data.First_name.toLowerCase())) &&
+            (!data.Phone_number || teacher.phone_no.includes(data.Phone_number)) &&
+            (!data.email || teacher.email.toLowerCase().includes(data.email.toLowerCase()))
+        );
+        setFindTeacher(filtered);
+        reset();
+    };
+
+    const deleteTecherById = async (teacherId) => {
         try {
-            const response = await axios.get('/t/teacher/', { params: data });
-            console.log('Response received successfully:', response.data);
-            setTeachers(response.data);
+            await axios.delete(`https://4cb1-2409-40c4-d-52d5-58ca-6992-f9d6-d9e0.ngrok-free.app/t/teacher/${teacherId}/`);
+            setTeachers(teachers.filter(teacher => teacher.id !== teacherId));
+            setFindTeacher(findTeacher.filter(teacher => teacher.id !== teacherId));
+            console.log('teacher record deleted');
         } catch (error) {
-            console.error('Error occur in view:', error.message);
+            console.log('error in delete', error.message);
         }
     };
-    const deleteItem = async (teacherId) => {
-        try {
-            await axios.delete('https://bc76-61-0-151-10.ngrok-free.app/t/teacher/11/')
-            setTeachers(teachers.filter(teacher => teacher.id !== teacherId))
-            console.log('teacher record deleted')
-        } catch (error) {
-            console.log('error in delete', error.message)
 
-        }
-
-    }
+    const editTeacherById = (teacherId) => {
+        navigate(`/editeacher?id=${teacherId}`);
+    };
 
     return (
-        <div className='container bg-gray-100 h-screen w-full overflow-hidden'>
+        <div className='container bg-gray-100 h-screen w-full overflow-x-hidden'>
             <div className='flex justify-between'>
                 <h1 className='pl-8 pt-4 font-semibold text-2xl'>Teachers List</h1>
                 <h1 className='pr-6 pt-4 font-semibold text-md'>Teacher / All Teachers</h1>
@@ -61,24 +69,24 @@ const TeacherList = () => {
                     <div className="w-full md:w-auto md:flex-1 md:flex md:gap-4">
                         <input
                             type="text"
-                            placeholder="Search by Name"
-                            {...register("name")}
+                            placeholder="Search by First Name"
+                            {...register("First_name")}
                             className="w-full px-3 py-3 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500"
                         />
                     </div>
                     <div className="w-full md:w-auto md:flex-1 md:flex md:gap-4">
                         <input
                             type="text"
-                            placeholder="Search by ID"
-                            {...register("id")}
+                            placeholder="Search by Phone Number"
+                            {...register("Phone_number")}
                             className="w-full px-3 py-3 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500"
                         />
                     </div>
                     <div className="w-full md:w-auto md:flex-1 md:flex md:gap-4">
                         <input
                             type="text"
-                            placeholder="Search by Phone No."
-                            {...register("phone")}
+                            placeholder="Search by Email"
+                            {...register("email")}
                             className="w-full px-3 py-3 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500"
                         />
                     </div>
@@ -104,7 +112,7 @@ const TeacherList = () => {
 
                         <button className="ml-2 bg-white text-black px-2 mt-2 rounded-md hover:bg-sky-400 border border-black focus:bg-sky-400 flex items-center">
                             <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-1" viewBox="0 0 20 20" fill="currentColor">
-                                <path fillRule="evenodd" d="M14 3a2 2 0 012 2v10a2 2 0 01-2 2H6a2 2 01-2-2V5a2 2 01-2-2h3a1 1 110 2H6v10h8V5h-1a1 1 110-2h3zM8 11a1 1 100 2h8a1 1 100-2H8zm0-4a1 1 100 2h8a1 1 100-2H8z" clipRule="evenodd" />
+                                <path fillRule="evenodd" d="M14 3a2 2 0 012 2v10a2 2 01-2 2H6a2 2 01-2-2V5a2 2 01-2-2h3a1 1 110 2H6v10h8V5h-1a1 1 110-2h3zM8 11a1 1 100 2h8a1 1 100-2H8zm0-4a1 1 100 2h8a1 1 100-2H8z" clipRule="evenodd" />
                             </svg>
                         </button>
 
@@ -131,19 +139,19 @@ const TeacherList = () => {
                                     <th scope="col" className="px-6 py-3 text-left text-semibold text-sm tracking-wider">CheckBox</th>
                                     <th scope="col" className="px-6 py-3 text-left text-sm text-semibold tracking-wider">Teacher's Id</th>
                                     <th scope="col" className="px-6 py-3 text-left text-sm text-semibold tracking-wider">First Name</th>
-                                    <th scope="col" className="px-6 py-3 text-left text-semibold text-sm tracking-wider">Middle Name</th>
-                                    <th scope="col" className="px-6 py-3 text-left text-semibold text-sm tracking-wider">Last Name</th>
-                                    <th scope="col" className="px-6 py-3 text-left text-semibold text-sm tracking-wider">Mobile Number</th>
-                                    <th scope="col" className="px-6 py-3 text-left text-semibold text-sm tracking-wider">Gender</th>
-                                    <th scope="col" className="px-6 py-3 text-left text-semibold text-sm tracking-wider">Adhaar Number</th>
-                                    <th scope="col" className="px-6 py-3 text-left text-semibold text-sm tracking-wider">Pan Number</th>
-                                    <th scope="col" className="px-6 py-3 text-left text-semibold text-sm tracking-wider">Qualification</th>
-                                    <th scope="col" className="px-6 py-3 text-left text-semibold text-sm tracking-wider">Email</th>
-                                    <th scope="col" className="px-6 py-3 text-left text-semibold text-sm tracking-wider">Operations</th>
+                                    <th scope="col" className="px-6 py-3 text-left text-sm text-semibold tracking-wider">Middle Name</th>
+                                    <th scope="col" className="px-6 py-3 text-left text-sm text-semibold tracking-wider">Last Name</th>
+                                    <th scope="col" className="px-6 py-3 text-left text-sm text-semibold tracking-wider">Mobile Number</th>
+                                    <th scope="col" className="px-6 py-3 text-left text-sm text-semibold tracking-wider">Gender</th>
+                                    <th scope="col" className="px-6 py-3 text-left text-sm text-semibold tracking-wider">Adhaar Number</th>
+                                    <th scope="col" className="px-6 py-3 text-left text-sm text-semibold tracking-wider">Pan Number</th>
+                                    <th scope="col" className="px-6 py-3 text-left text-sm text-semibold tracking-wider">Qualification</th>
+                                    <th scope="col" className="px-6 py-3 text-left text-sm text-semibold tracking-wider">Email</th>
+                                    <th scope="col" className="px-6 py-3 text-left text-sm text-semibold tracking-wider">Operations</th>
                                 </tr>
                             </thead>
                             <tbody className="bg-white divide-y divide-gray-200">
-                                {teachers.map((teacher) => (
+                                {findTeacher.map((teacher) => (
                                     <tr key={teacher.id}>
                                         <td className="px-6 py-4 whitespace-nowrap">
                                             <input
@@ -162,7 +170,10 @@ const TeacherList = () => {
                                         <td className="px-6 py-4 text-sm text-gray-500 whitespace-nowrap">{teacher.pan_no}</td>
                                         <td className="px-6 py-4 text-sm text-gray-500 whitespace-nowrap">{teacher.qualification}</td>
                                         <td className="px-6 py-4 text-sm text-gray-500 whitespace-nowrap">{teacher.email}</td>
-                                        <td className="px-6 py-4 text-sm text-gray-500 whitespace-nowrap"><button onClick={() => deleteItem(teacher.id)} className='bg-red-800 text-white p-3 rounded-lg'>Delete</button></td>
+                                        <td className="px-6 py-4 text-sm text-gray-500 whitespace-nowrap">
+                                            <button onClick={() => deleteTecherById(teacher.id)} className='bg-red-800 text-white p-3 rounded-lg'>Delete</button>
+                                            <button onClick={() => editTeacherById(teacher.id)} className='bg-blue-800 text-white p-3 rounded-lg ml-2'>Edit</button>
+                                        </td>
                                     </tr>
                                 ))}
                             </tbody>
@@ -170,7 +181,7 @@ const TeacherList = () => {
                     </div>
                 </div>
             </div>
-        </div >
+        </div>
     );
 };
 

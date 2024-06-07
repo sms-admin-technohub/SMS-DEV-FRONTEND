@@ -1,27 +1,22 @@
 import axios from 'axios';
-import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const AddTeacher = () => {
-
+    //-----States----
     const { register, handleSubmit, formState: { errors }, reset } = useForm();
-    const [file, setFile] = useState(null);
-
+    const navigate = useNavigate();
+    //function on submitting the form 
     const onSubmit = async (data) => {
         try {
-            const res = await axios.post(`https://bc76-61-0-151-10.ngrok-free.app/t/teacher/`, data);
+            const res = await axios.post(`https://4cb1-2409-40c4-d-52d5-58ca-6992-f9d6-d9e0.ngrok-free.app/t/teacher/`, data);
             console.log('Data is successfully submitted via post req', res.data);
         } catch (error) {
             console.log('Error submitting data via post req', error.message);
         }
         reset();
+        navigate('/teacherlist')
     };
-
-    const handleFileChange = (e) => {
-        setFile(e.target.files[0]);
-    }
-
     return (
         <div className='container bg-gray-100 h-screen w-full overflow-hidden'>
             <div className='flex justify-between'>
@@ -118,16 +113,6 @@ const AddTeacher = () => {
                             </div>
                         </div>
                     </div>
-                    {/* File Upload */}
-                    <div className="flex justify-start font-bold pt-4">
-                        <h1>Upload Teacher Photo (150px X 150px)</h1>
-                    </div>
-                    <div className="flex justify-start mb-4 pb-2">
-                        <div className="mr-4">
-                            <input onChange={handleFileChange} type="file" className="block text-sm font-bold mb-2" />
-                        </div>
-                    </div>
-
                     {/* Submit Button */}
                     <div className="flex justify-start mb-4 pb-6">
                         <button type="submit" className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Submit</button>

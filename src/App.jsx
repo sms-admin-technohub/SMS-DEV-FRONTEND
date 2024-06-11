@@ -31,7 +31,8 @@ function App() {
         <Route path='/subjects' element={< Subjects />} />
         <Route path='/accounts' element={< Accounts />} />
         <Route path='/addstudents' element={<AddStudentForm />}/>
-        <Route path='/editstudents' element={<EditStudentForm />}/>
+        <Route path='/editstudents/:id' element={<EditStudentForm />} />
+
         <Route path='/studentlist' element={<StudentList />} />
         <Route path='/viewstudents' element={<StudentView />} />
 
@@ -49,4 +50,3 @@ function App() {
   )
 }
 export default App
-

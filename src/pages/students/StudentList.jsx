@@ -95,9 +95,7 @@ const StudentList = () => {
                         </div>
                     </div>
                 </div>
-                <div className='mt-5'>
-                    {/* Handle errors if needed */}
-                </div>
+               
                 <Table columns={columns} data={students} onEdit={handleEdit} onDelete={handleDelete} loading={loading} />
             </div>
         </>

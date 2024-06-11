@@ -90,7 +90,6 @@ function AddStudentForm() {
                   <option value="2">2</option>
                   <option value="3">3</option>
                 </select>
-                {/* {errors.classes && <span className="text-red-500 text-xs">This field is required</span>} */}
               </div>
 
               <div>

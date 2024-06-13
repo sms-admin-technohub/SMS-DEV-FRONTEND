@@ -2,6 +2,7 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars, faBell, faExpand } from '@fortawesome/free-solid-svg-icons';
+import Logout from '../components/Logout';
 
 const Header = ({ toggleSideBar }) => {
     return (
@@ -50,9 +51,9 @@ const Header = ({ toggleSideBar }) => {
                             </div>
                         </li>
                         {/* Bell Icon */}
-                        <li>
+                        <li className='hidden lg:block md:block'>
                             <div className='w-8 h-8'>
-                                <FontAwesomeIcon className='rounded-full bg-slate-100 p-2 cursor-pointer text-white h-6' style={{ color: '#050505' }} icon={faBell} />
+                                <FontAwesomeIcon className='rounded-full bg-slate-100 p-2 cursor-pointer texet-white h-6' style={{ color: '#050505' }} icon={faBell} />
                             </div>
                         </li>
                         {/* Expand Icon */}
@@ -76,6 +77,9 @@ const Header = ({ toggleSideBar }) => {
                                     </select>
                                 </div>
                             </div>
+                        </li>
+                        <li>
+                            <Logout />
                         </li>
                     </ul>
                 </div>

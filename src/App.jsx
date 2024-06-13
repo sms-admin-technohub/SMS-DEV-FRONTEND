@@ -21,6 +21,10 @@ import AddClass from './pages/classes/AddClass'
 import EditClass from './pages/classes/EditClass'
 import ClassList from './pages/classes/ClassList'
 import ClassView from './pages/classes/ClassView'
+import Login from './components/Login'
+import Logout from './components/Logout'
+import Forgotpassword from './components/Forgotpassword'
+import Emailotp from './components/Emailotp'
 
 function App() {
 
@@ -64,6 +68,10 @@ function App() {
 
 
       </Route>
+      <Route path='/login' element={<Login />}></Route>
+      <Route path='/logout' element={<Logout />}></Route>
+      <Route path='/forgot' element={<Forgotpassword />}></Route>
+      <Route path='/emailotp' element={<Emailotp />}></Route>
     </Routes>
 
   )

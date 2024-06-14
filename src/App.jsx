@@ -17,7 +17,9 @@ import DirectorList from './pages/directors/DirectorList'
 import DirectorView from './pages/directors/DirectorView'
 import DirectorAdd from './pages/directors/DirectorAdd';
 import DirectorEdit from './pages/directors/DirectorEdit';
-
+import AddRole from './pages/Role/AddRole'
+import EditRole from './pages/Role/EditRole'
+import RoleList from './pages/Role/RoleList'
 function App() {
 
   return (
@@ -28,6 +30,11 @@ function App() {
         <Route path='/dashboard' element={<Dashboard />} />
         <Route path='/departments' element={<Departments />} />
         <Route path='/students' element={<Students />} />
+        <Route path='/addrole' element={< AddRole/>} />
+        <Route path='/editrole/:id' element={< EditRole/>} />
+        <Route path='/rolelist' element={< RoleList/>} />
+
+
         <Route path='/teachers' element={<Teachers />} />
         <Route path='/directorList' element={<DirectorList />} />
         <Route path='/directorView' element={<DirectorView />} />
